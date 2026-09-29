@@ -131,6 +131,7 @@ console.log(User.getNoMembers());
 
 
 //Inheritance
+/*
 class User{
     static count = 0 ;
     constructor(name,salary){
@@ -165,6 +166,118 @@ let user1 = new SuperUser("KareemEldeen",100000,'High');
 console.log(user1.name);
 console.log(user1.salary);
 console.log(user1.permissions);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Encapsulation
+/*
+class User{
+    //Private Property
+    #e
+    cosntructor(name,eSalary){
+        this.name = name;
+        this.#e = eSalary;
+    }
+    getSalary(){
+        return parseInt(this.#e);
+    }
+}
+
+let u = new User("Osama",'5000 gneh');
+console.log(parseInt('124 ksdjf'));
+*/
+
+
+
+
+
+
+
+
+
+
+
+//Prototype Introduction
+/*
+class User{
+    constructor(name,salary){
+        this.name = name;
+        this.salary = salary;
+    }
+
+    sayHello(){
+        return `Hello, ${this.name}`;
+    }
+}
+
+
+let u = new User("Osama",4000);
+console.log(User.prototype);
+
+//Adding to the prototype
+User.prototype.sayWelcome = function(){return `Welcome ${this.name}`;}
+String.prototype.hobby = 'Programming';
+let s = 'String Variable';
+console.log(s.hobby);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Object Metadata and Descriptor
+const myObj = {
+    a:1,
+    b:2
+}
+
+Object.defineProperty(myObj,'c',{
+    writable:true,
+    enumerable: true,
+    configurable:true,
+    value: 3,
+});
+
+Object.defineProperties(myObj,{
+    d:{
+        configurable:true,
+        value:10
+    },
+    e:{
+        configurable:true,
+        value:200
+    }
+});
+console.log(myObj);
+console.log(delete myObj.c);
+console.log(Object.getOwnPropertyDescriptor(myObj,'d'));
+console.log(Object.getOwnPropertyDescriptors(myObj));
 
 
 

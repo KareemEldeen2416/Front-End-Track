@@ -1,0 +1,11 @@
+{
+    "String": "This is a string",
+    "Number": 100,
+    "Object":{
+        "EG":"Cairo",
+        "KSA":"Riyadh"
+    },
+    "array":[1,2,3,"value"],
+    "boolean":true,
+    "null":null
+}
