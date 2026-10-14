@@ -413,3 +413,562 @@ printMsg({one:'Mostafa',two:20,four:false});
 
 
 //Type annotation with object
+/*
+let user:{
+    Name: string,
+    readonly age: number,
+    country: string,
+    hired:boolean,
+    languages:{
+        Arabic:number,
+        English:number
+    }
+} = {
+    Name: "Osama",
+    age:23,
+    country: 'Egypt',
+    hired:true,
+    languages:{
+        Arabic:100,
+        English:90
+    }
+}
+
+console.log(user.Name);
+user.Name = 'Ahmed';
+console.log(user.Name);
+*/
+
+
+
+
+
+
+
+
+
+//Interface Declaration
+/*
+interface User{
+    readonly name:string,
+    age:number,
+    hired:boolean
+}
+
+let user:User = {
+    name:'Hamada',
+    age:23,
+    hired:false
+}
+
+console.log(user['age']);
+user.age = 27;
+console.log(user.age);
+
+function getData(data:User):void{
+    console.log(data.name);
+    console.log(data.age);
+    console.log(data.hired);
+}
+
+getData({name:'KareemEldeen',age:23,hired:true});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//interface methods, and parameters
+/*
+interface User{
+    readonly name:string,
+    age:number,
+    hired:boolean,
+    sayHello():string,
+    sayWelcome: ()=> string
+}
+
+let user:User = {
+    name:'Hamada',
+    age:23,
+    hired:false,
+    sayHello(){
+        return "Hello from function in interface";
+    },
+    sayWelcome: ()=> "Welcome to the cave"
+}
+
+console.log(user.sayHello());
+console.log(user.sayWelcome());
+*/
+
+
+
+
+
+
+
+//Interface reopen, and usecases
+/*
+//Home Page
+interface settings{
+    theme:boolean,
+    font:string
+}
+
+//Article Page
+interface settings{
+    sidebar:boolean
+}
+
+//Contact Page
+interface settings{
+    external:boolean
+}
+
+let userSettings:settings = {
+    theme:true,
+    font:'Arial',
+    sidebar:true,
+    external:true
+};
+console.log(userSettings);
+*/
+
+
+
+
+
+
+
+
+
+//Interface extend
+/*
+interface user{
+    name:string,
+    age:number
+}
+
+interface moderator extends user{
+    role:string
+}
+
+let user : moderator = {
+    name:'KareemEldeen',
+    age:23,
+    role:'Moderator'
+}
+console.log(user);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Class type annotaiton
+
+    /*
+class User{
+
+    //properties must be declared with a type and initialized
+    userName:string;
+    age:number;
+    sendMsg: ()=>string;
+    //constructor
+    constructor(userName:string,age:number){
+        this.userName = userName;
+        this.age = age;
+        this.sendMsg = function(){
+            return `Hello ${this.userName}, your age is : ${this.age}`;
+        }
+    }
+
+    sayHi(){
+        return 'Hi From Class User';
+    }
+}
+
+
+let u = new User("KareemEldeen",24);
+console.log(u.sendMsg());
+console.log(u.sayHi());
+*/
+
+
+
+
+
+
+
+
+
+
+
+//Classes access modifiers, and parameters properties
+
+/*
+class User{
+
+    //properties must be declared with a type and initialized
+    private userName:string;
+    protected age:number;
+    sendMsg: ()=>string;
+    //constructor
+    constructor(userName:string,age:number,public readonly address:string, private salary:number){
+        this.userName = userName;
+        this.age = age;
+        this.sendMsg = function(){
+            return `Hello ${this.userName}, your age is : ${this.age}`;
+        }
+    }
+
+    sayHi(){
+        return 'Hi From Class User';
+    }
+}
+*/
+
+
+
+
+
+
+
+
+//Class, get and set
+/*
+class User{
+
+    //properties must be declared with a type and initialized
+    private userName:string;
+    protected age:number;
+    sendMsg: ()=>string;
+    //constructor
+    constructor(userName:string,age:number,public readonly address:string, private salary:number){
+        this.userName = userName;
+        this.age = age;
+        this.sendMsg = function(){
+            return `Hello ${this.userName}, your age is : ${this.age}`;
+        }
+    }
+
+    sayHi(){
+        return 'Hi From Class User';
+    }
+
+    getUserName():string{
+        return this.userName;
+    }
+
+    setUserName(uname:string):void{
+        this.userName = uname;
+    }
+}
+
+let user = new User('KareemEldeen',24,'Giza',10000);
+console.log(user.getUserName());
+console.log(user.address);
+console.log(user.sendMsg());
+user.setUserName('Mostafa');
+console.log(user.getUserName());
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//class static members
+/*
+class User{
+    private static counted:number = 0;
+    static getCount():void{
+        console.log(`${this.counted} Objects created`);
+    }
+    constructor(username:string){
+        User.counted++;
+    }
+}
+
+let user1 = new User("KareemEldeen");
+let user2 = new User("Osama");
+let user3 = new User("Nabil");
+// console.log(User.counted);
+User.getCount();
+*/
+
+
+
+
+
+
+
+//Class implements interface
+/*
+interface settings{
+    theme:boolean,
+    font?:string,
+    save():void
+}
+
+class User implements settings{
+    constructor(public theme:boolean){}
+    save():void{
+        console.log("Settings saved successfully!")
+    }
+
+    update():void{
+        console.log('Updated!');
+    }
+}
+
+
+let user = new User(true);
+console.log(user.theme);
+user.save();
+user.update();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Abstract classes, and memebers
+/*
+abstract class Food{
+    constructor(foodName:string){}
+    abstract getCookingTime():void;
+}
+
+class Pizza extends Food{
+    constructor(foodName:string,price:number){
+        super(foodName);
+    }
+
+    getCookingTime():void{
+        console.log('Cooking time for pizza is 20 minutes');
+    }
+}
+
+class Pasta extends Food{
+    constructor(foodName:string,price:number){
+        super(foodName);
+    }
+
+    getCookingTime():void{
+        console.log('Cooking time for pasta is 30 minutes');
+    }
+}
+
+
+let pizza = new Pizza("Pizza",100);
+let pasta = new Pasta("Pasta",120);
+pizza.getCookingTime();
+pasta.getCookingTime();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+//Polymorphism, and override
+/*
+class Player{
+    constructor(public pName:string){}
+    attack(){
+        console.log('Attacking Now!')
+    }
+}
+
+class Amazon extends Player{
+    constructor(playerName:string, public spears:number){
+        super(playerName);
+    }
+    
+    override attack(){
+        console.log('Attacking with spears');
+        this.spears -=1;
+        console.log(`Available speaers ${this.spears}`)
+    }
+}
+
+let amazon = new Amazon('Zee' , 78);
+amazon.attack();
+amazon.attack();
+amazon.attack();
+amazon.attack();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Generics Introduction
+/*
+function returnType<GenericType>(val:GenericType):GenericType{
+    return val;
+}
+
+
+console.log(returnType<number>(20));
+console.log(returnType<string>('KareemEldeen'));
+console.log(returnType<boolean>(true));
+*/
+
+
+
+
+
+
+
+
+
+//Generics multiple types
+/*
+function returnMultipleTypes<T,S>(one:T , two:S):string{
+    return `First value is ${one} , Second values is ${two}`;
+}
+
+console.log(returnMultipleTypes<string,number>('Ahmed',3));
+console.log(returnMultipleTypes<boolean,number>(true,3));
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Generic classes
+/*
+class User <T = number>{
+    constructor(public value:T){}
+    getName():void{
+        console.log(this.value);
+    }
+}
+
+
+let user = new User<string>("KareemEldeen");
+user.getName();
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+//Generics, and interfaces
+/*
+interface book{
+    title:string,
+    author:string
+}
+
+class collection<T>{
+    public data:T[] = [];
+    addItem(item:T):void{
+        this.data.push(item);
+    }
+
+}
+
+let books = new collection<book>();
+books.addItem({title:"What's behind the nature" , author:"Ahmed Tawfeek"});
+books.addItem({title:"Jotupia" , author:"Ahmed Tawfeek"});
+books.addItem({title:"Triple of Granada" , author:"Radwa Ashour"});
+console.log(books);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////          END          //////////
+
+
+
+

@@ -1,16 +1,15 @@
 "use strict";
 //Type Annotation
 Object.defineProperty(exports, "__esModule", { value: true });
-function printMessage(props) {
-    console.log(`Hello ${props.one}`);
-    console.log(`Hello ${props.two}`);
-    console.log(`Hello ${props.three}`);
+class collection {
+    data = [];
+    addItem(item) {
+        this.data.push(item);
+    }
 }
-function printMsg(props) {
-    console.log(`Hello ${props.one}`);
-    console.log(`Hello ${props.two}`);
-    console.log(`Hello ${props.four}`);
-}
-printMessage({ one: 'KareemEldeen', two: 12, three: true });
-printMsg({ one: 'Mostafa', two: 20, four: false });
+let books = new collection();
+books.addItem({ title: "What's behind the nature", author: "Ahmed Tawfeek" });
+books.addItem({ title: "Jotupia", author: "Ahmed Tawfeek" });
+books.addItem({ title: "Triple of Granada", author: "Radwa Ashour" });
+console.log(books);
 //# sourceMappingURL=index.js.map
